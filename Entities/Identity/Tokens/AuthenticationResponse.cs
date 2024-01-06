@@ -4,6 +4,6 @@
     {
         public string Token { get; set; }
         public DateTime Expiration { get; set; }
-        public int? HiercharyLevel { get; set; } 
+        public int? HierarchyLevel { get; set; } 
     }
 }
