@@ -125,7 +125,7 @@ namespace DashboardDemo.Controllers
             //}
             //catch
             //{ //catch (Exception ex) (DbUpdateException ex)
-                return StatusCode(500, new InternalServerErrorResponse("Error desconocido al intentar asignar el mozo"));
+                //return StatusCode(500, new InternalServerErrorResponse("Error desconocido al intentar asignar el mozo"));
             //}
         }
 
