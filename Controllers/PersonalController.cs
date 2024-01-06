@@ -112,14 +112,7 @@ namespace DashboardDemo.Controllers
                 var currentRoles = await _userManager.GetRolesAsync(existingUser);
                 var removeRolesResult = await _userManager.RemoveFromRolesAsync(existingUser, currentRoles);
                 if (!removeRolesResult.Succeeded)
-                {
-                    //string s = "";
-                    //foreach (var error in removeRolesResult.Errors)
-                    //{
-                    //    s+=$"Error al quitar roles: {error.Code} - {error.Description}";
-                    //}
-                    //return BadRequest($"No fue posible la actualización del personal 1 {s}");
-                    
+                {                    
                     ModelState.AddModelError("error", "No fue posible la actualización del personal");
                     return ValidationProblem(ModelState);
                 }

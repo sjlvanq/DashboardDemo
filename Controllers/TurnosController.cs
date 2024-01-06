@@ -107,8 +107,8 @@ namespace DashboardDemo.Controllers
             {
                 return BadRequest("Falta información del turno que se intenta registrar.");
             }
-            //try
-            //{
+            try
+            {
                 int turnoId = asignarMozoDto.TurnoId;
                 int mesaId = asignarMozoDto.MesaId;
                 string mozoDni = asignarMozoDto.MozoDni;
@@ -119,11 +119,11 @@ namespace DashboardDemo.Controllers
                     new SqlParameter("MozoDNI", mozoDni));
 
                 return Ok(new { NewUpdMsg = "El mozo ha sido asignado" });
-            //}
-            //catch
-            //{ //catch (Exception ex) (DbUpdateException ex)
-                //return StatusCode(500, new InternalServerErrorResponse("Error desconocido al intentar asignar el mozo"));
-            //}
+            }
+            catch
+            { //catch (Exception ex) (DbUpdateException ex)
+                return StatusCode(500, new InternalServerErrorResponse("Error desconocido al intentar asignar el mozo"));
+            }
         }
 
         [HttpPut("asignar-mesa")]
@@ -133,8 +133,8 @@ namespace DashboardDemo.Controllers
             {
                 return BadRequest("Falta información del turno que se intenta registrar.");
             }
-            //try
-            //{
+            try
+            {
                 var mesaExistente = await _context.Mesas.AnyAsync(m => m.MesaId == asignarMesaDto.MesaId);
 
                 if (!mesaExistente) { 
@@ -146,11 +146,11 @@ namespace DashboardDemo.Controllers
                 _context.Asignaciones.Add(asignacion);
                 await _context.SaveChangesAsync();
                 return Ok(new { newUpdMsg = $"Venta registrada" });
-            //}
-            //catch
-            //{ //catch (Exception ex) (DbUpdateException ex)
-            //    return StatusCode(500, new InternalServerErrorResponse("Error desconocido al intentar asignar el mozo"));
-            //}
+            }
+            catch
+            { //catch (Exception ex) (DbUpdateException ex)
+                return StatusCode(500, new InternalServerErrorResponse("Error desconocido al intentar asignar el mozo"));
+            }
         }
 
     }

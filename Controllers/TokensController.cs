@@ -48,7 +48,7 @@ namespace DashboardDemo.Controllers
             {
                 var authenticationResponse = await GenerateJwtToken(userCredentials);
                 
-
+                //HierarchyLevel
                 var user = await _userManager.FindByNameAsync(userCredentials.UserName);
                 var roles = await _userManager.GetRolesAsync(user);
                 var roleName = roles.FirstOrDefault();
@@ -57,7 +57,6 @@ namespace DashboardDemo.Controllers
                 authenticationResponse.HierarchyLevel = hierarchyLevel;
 
                 return authenticationResponse;
-                //return await GenerateJwtToken(userCredentials);
             }
             else
             {

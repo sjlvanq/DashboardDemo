@@ -62,54 +62,6 @@ namespace DashboardDemo.Controllers
             return Ok(new { newUpdMsg = $"Mesa \"{mesaRetrieved.Nombre}\" registrada" });
         }
 
-/*
-        [HttpPost("{mesaId}/asignar-mozo")]
-        public async Task<IActionResult> AsignarMozoAMesa(int mesaId, [FromBody] MesaAsignarMozoDto asignarMozoDto)
-        {
-            var evaluando = new MesaRetrieveDto { MesaId = mesaId };
-            var evaluacion = ValidationHelper.ValidateRouteParams(this, evaluando);
-            if (evaluacion != null){ return evaluacion; }
-
-            if (asignarMozoDto == null || string.IsNullOrEmpty(asignarMozoDto.MozoId)) {
-                return BadRequest("Falta información del mozo que se intenta asignar a la mesa."); }
-            if (asignarMozoDto.TurnoMozoId == 0) {
-                ModelState.AddModelError(nameof(MesaAsignarMozoDto.TurnoMozoId), "No se ha especificado un turno.");
-                return ValidationProblem(ModelState);
-            }
-
-            var mesa = await _context.Mesas.FindAsync(mesaId);
-            if (mesa == null) {
-                ModelState.AddModelError(nameof(MesaRetrieveDto.MesaId), "Mesa no encontrada.");
-                return ValidationProblem(ModelState);
-            }
-
-            var mozo = await _userManager.FindByIdAsync(asignarMozoDto.MozoId);
-            if (mozo == null) {
-                ModelState.AddModelError(nameof(MesaAsignarMozoDto.TurnoMozoId), "Mozo no encontrado.");
-                return ValidationProblem(ModelState);
-            }
-
-            var turnoMozo = await _context.Turnos
-                .Include(tm => tm.MozosTurnos)
-                .FirstOrDefaultAsync(tm => tm.Id == asignarMozoDto.TurnoMozoId);
-            if (turnoMozo == null || turnoMozo.MozosTurnos == null) {
-                ModelState.AddModelError(nameof(MesaAsignarMozoDto.MozoId), "Mozo no encontrado.");
-                return ValidationProblem(ModelState);
-            }
-
-            var mozoTurnoExistente = await _context.Mozos
-                .FirstOrDefaultAsync(mt => mt.MozoId == asignarMozoDto.MozoId && mt.TurnoMozoId == asignarMozoDto.TurnoMozoId);
-            if (mozoTurnoExistente == null) {
-                ModelState.AddModelError(nameof(MesaAsignarMozoDto.MozoId), "El mozo debe estar asignado al turno antes de asignársele una mesa.");
-                return ValidationProblem(ModelState);
-            }
-
-            mozoTurnoExistente.MesaId = mesaId;
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }
-*/
-
         [HttpDelete("{mesaId}")]
         public async Task<ActionResult<string>> SoftDeleteMesaAsync(int mesaId)
         {
