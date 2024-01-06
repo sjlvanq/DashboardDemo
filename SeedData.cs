@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using DashboardDemo.Entities.Identity.Roles;
+﻿using DashboardDemo.Entities.Identity.Roles;
 using DashboardDemo.Entities.Identity.Users;
+using Microsoft.AspNetCore.Identity;
 
 namespace DashboardDemo
 {

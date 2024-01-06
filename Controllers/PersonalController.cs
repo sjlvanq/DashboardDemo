@@ -1,17 +1,11 @@
 ﻿using AutoMapper;
 using DashboardDemo.Entities.DTOs;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using DashboardDemo.Helpers;
-using Microsoft.Extensions.Logging;
 using DashboardDemo.Entities.DTOs.ErrorResponses;
-
-
-using System.Net;
-using DashboardDemo.Entities.Models;
 using DashboardDemo.Entities.Identity.Roles;
 using DashboardDemo.Entities.Identity.Users;
+using DashboardDemo.Helpers;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DashboardDemo.Controllers
 {

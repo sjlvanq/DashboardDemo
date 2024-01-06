@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using DashboardDemo.Entities.Models;
-using DashboardDemo.Entities.Identity.Roles;
+﻿using DashboardDemo.Entities.Identity.Roles;
 using DashboardDemo.Entities.Identity.Users;
-using DashboardDemo.Entities.DTOs.Turnos;
+using DashboardDemo.Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace DashboardDemo
 {

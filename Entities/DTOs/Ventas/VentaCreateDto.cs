@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DashboardDemo.Entities.DTOs.Ventas
+﻿namespace DashboardDemo.Entities.DTOs.Ventas
 {
     public class VentaCreateDto : VentaBaseDto
     {

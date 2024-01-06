@@ -1,6 +1,5 @@
 ﻿using DashboardDemo.Entities.Models;
 using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DashboardDemo.Entities.Identity.Roles

@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
+using DashboardDemo.Entities.DTOs.ErrorResponses;
+using DashboardDemo.Entities.DTOs.Turnos;
 using DashboardDemo.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using DashboardDemo.Helpers;
-using DashboardDemo.Entities.DTOs.ErrorResponses;
 using Microsoft.Data.SqlClient;
-using DashboardDemo.Entities.DTOs.Turnos;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DashboardDemo.Controllers

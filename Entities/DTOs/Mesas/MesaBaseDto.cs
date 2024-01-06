@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DashboardDemo.Entities.DTOs.Mesas
+﻿namespace DashboardDemo.Entities.DTOs.Mesas
 {
     public class MesaBaseDto
     {

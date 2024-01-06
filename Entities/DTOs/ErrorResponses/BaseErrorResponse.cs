@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Http;
-
-namespace DashboardDemo.Entities.DTOs.ErrorResponses
+﻿namespace DashboardDemo.Entities.DTOs.ErrorResponses
 {
     public class BaseErrorResponse
     {

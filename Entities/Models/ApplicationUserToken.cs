@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
+﻿using DashboardDemo.Entities.Identity.Users;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
-using DashboardDemo.Entities.Identity.Users;
 
 namespace DashboardDemo.Entities.Models
 {

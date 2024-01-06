@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DashboardDemo.Entities.DTOs.ErrorResponses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using DashboardDemo.Entities.DTOs.ErrorResponses;
 
 namespace DashboardDemo.Controllers
 {

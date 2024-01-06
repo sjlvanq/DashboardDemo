@@ -1,7 +1,7 @@
 ﻿using DashboardDemo.Entities.DTOs;
+using DashboardDemo.Entities.Identity.Roles;
 using DashboardDemo.Entities.Identity.Tokens;
 using DashboardDemo.Entities.Identity.Users;
-using DashboardDemo.Entities.Identity.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
