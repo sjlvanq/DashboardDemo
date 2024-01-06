@@ -1,6 +1,7 @@
 ﻿using DashboardDemo.Entities.DTOs;
 using DashboardDemo.Entities.Identity.Tokens;
 using DashboardDemo.Entities.Identity.Users;
+using DashboardDemo.Entities.Identity.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +18,19 @@ namespace DashboardDemo.Controllers
     public class TokensController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IConfiguration configuration;
+
         public TokensController(UserManager<ApplicationUser> userManager,
                                 SignInManager<ApplicationUser> signInManager,
+                                RoleManager<ApplicationRole> roleManager,
                                IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
+
             this.configuration = configuration;
         }
         [HttpPost("login")]
@@ -40,7 +46,18 @@ namespace DashboardDemo.Controllers
 
             if (result.Succeeded)
             {
-                return await GenerateJwtToken(userCredentials);
+                var authenticationResponse = await GenerateJwtToken(userCredentials);
+                
+
+                var user = await _userManager.FindByNameAsync(userCredentials.UserName);
+                var roles = await _userManager.GetRolesAsync(user);
+                var roleName = roles.FirstOrDefault();
+                var customRole = await _roleManager.FindByNameAsync(roleName);
+                var hierarchyLevel = customRole?.HierarchyLevel;
+                authenticationResponse.HierarchyLevel = hierarchyLevel;
+
+                return authenticationResponse;
+                //return await GenerateJwtToken(userCredentials);
             }
             else
             {
@@ -70,6 +87,7 @@ namespace DashboardDemo.Controllers
                       expires: expiration,
                      signingCredentials: creds
                      );
+
             return new AuthenticationResponse()
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
