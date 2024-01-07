@@ -73,10 +73,20 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
 });
 
-builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddEndpointsApiExplorer(); // OpenApi
+
 var app = builder.Build();
 
 app.UseCors("AllowAnyOrigin"); // Inaceptable en Build !!!
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 
 // Sembrado de datos. 
 using (var scope = app.Services.CreateScope())
@@ -87,10 +97,4 @@ using (var scope = app.Services.CreateScope())
     SeedData.SeedDB(userManager, roleManager);
 }
 
-app.UseRouting();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllers();
 app.Run();
