@@ -62,38 +62,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.AddControllers();
-/*
-    .ConfigureApiBehaviorOptions(options =>
-{
-    options.InvalidModelStateResponseFactory = context =>
-    {
-        var errors = context.ModelState
-            .Where(e => e.Value.Errors.Count > 0)
-            .SelectMany(x => x.Value.Errors)
-            .Select(x => x.ErrorMessage)
-            .ToList();
 
-        return new BadRequestObjectResult(errors);
-    };
-}); 
-*/
-
-/*
-    .ConfigureApiBehaviorOptions(options =>
-    {
-        options.InvalidModelStateResponseFactory = context =>
-        {
-            var errors = context.ModelState
-                .Where(e => e.Value.Errors.Count > 0)
-                .SelectMany(x => x.Value.Errors)
-                .Select(x => x.ErrorMessage)
-                .ToList();
-
-            return new BadRequestObjectResult(errors);
-        };
-    });
-*/
-
+// Inaceptable en Build !!!
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAnyOrigin",
@@ -104,16 +74,9 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    //app.UseSwagger();
-    //app.UseSwaggerUI();
-    app.UseCors("AllowAnyOrigin");
-}
+app.UseCors("AllowAnyOrigin"); // Inaceptable en Build !!!
 
 // Sembrado de datos. 
 using (var scope = app.Services.CreateScope())
