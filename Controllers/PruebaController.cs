@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DashboardDemo.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     [Authorize]
+    [ApiController]
+    [Route("api/[controller]")]
     public class PruebaController : ControllerBase
     {
         [HttpGet]

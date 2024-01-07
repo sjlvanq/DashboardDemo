@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DashboardDemo.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="CEO, Mozo")]
     [ApiController]
     [Route("api/[controller]")]
     public class VentasController : ControllerBase
@@ -28,6 +28,7 @@ namespace DashboardDemo.Controllers
             _userManager = userManager;
         }
 
+        [Authorize(Roles = "CEO")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VentaCreateDto>>> GetVentas()
         {
@@ -54,6 +55,7 @@ namespace DashboardDemo.Controllers
             return Ok(ventaDto);
         }
 
+        [Authorize(Roles = "CEO")]
         [HttpPost]
         public async Task<ActionResult<VentaCreateDto>> PostVenta(VentaCreateDto ventaDto)
         {
@@ -81,6 +83,7 @@ namespace DashboardDemo.Controllers
             return Ok(new { newUpdMsg = $"Venta registrada" });
         }
 
+        [Authorize(Roles="CEO")]
         [HttpPost("historial")]
         public async Task<IActionResult> GetHistorial(VentaFiltroDto filtro)
         {
@@ -93,6 +96,7 @@ namespace DashboardDemo.Controllers
             return Ok(ventas);
         }
 
+        [Authorize(Roles="Mozo")]
         [HttpGet("mesas")]
         public IActionResult GetMesasMozo()
         {
@@ -113,6 +117,7 @@ namespace DashboardDemo.Controllers
             }
         }
 
+        [Authorize(Roles = "CEO")]
         [HttpGet("filtrar")]
         public async Task<ActionResult<IEnumerable<VentaReadOrUpdateDto>>> GetVentasPorFecha([FromQuery] DateTime fechaInicio, [FromQuery] DateTime fechaFin)
         {

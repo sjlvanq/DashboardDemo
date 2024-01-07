@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DashboardDemo.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Gerente")]
     [ApiController]
     [Route("api/[controller]")]
     public class MesasController : ControllerBase

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 
@@ -71,6 +72,11 @@ namespace DashboardDemo.Controllers
                 new Claim("UserName",  userCredentials.UserName),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             };
+            var roles = await _userManager.GetRolesAsync(user);
+            foreach (var role in roles)
+            {
+                clams.Add(new Claim(ClaimTypes.Role, role));
+            }
             var claimDb = await _userManager.GetClaimsAsync(user);
             clams.AddRange(claimDb);
 

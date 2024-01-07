@@ -4,12 +4,13 @@ using DashboardDemo.Entities.DTOs.ErrorResponses;
 using DashboardDemo.Entities.Identity.Roles;
 using DashboardDemo.Entities.Identity.Users;
 using DashboardDemo.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DashboardDemo.Controllers
 {
-    //[Authorize]
+    [Authorize(Roles = "CEO, Gerente")]
     [ApiController]
     [Route("api/[controller]")]
     public class PersonalController : ControllerBase

@@ -2,6 +2,7 @@
 using DashboardDemo.Entities.DTOs.ErrorResponses;
 using DashboardDemo.Entities.DTOs.Turnos;
 using DashboardDemo.Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DashboardDemo.Controllers
 {
-    //[Authorize]
+    [Authorize(Roles = "Gerente")]
     [ApiController]
     [Route("api/[controller]")]
     public class TurnosController : ControllerBase
