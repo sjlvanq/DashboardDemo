@@ -19,6 +19,7 @@ public class RolesController : ControllerBase
         _roleManager = roleManager;
     }
 
+    [Authorize(Roles = "CEO, Gerente")]
     [HttpGet("inferiores")]
     public async Task<IActionResult> GetRolesWithHigherHierarchy()
     {

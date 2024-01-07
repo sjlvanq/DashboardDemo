@@ -11,15 +11,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DashboardDemo.Controllers
 {
-    [Authorize(Roles="CEO, Mozo")]
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "CEO, Mozo")]
     public class VentasController : ControllerBase
     {
         private readonly DashboardDemoDbContext _context;
         private readonly IMapper _mapper;
         private readonly UserManager<ApplicationUser> _userManager;
-
 
         public VentasController(DashboardDemoDbContext context, UserManager<ApplicationUser> userManager, IMapper mapper)
         {
@@ -55,7 +54,7 @@ namespace DashboardDemo.Controllers
             return Ok(ventaDto);
         }
 
-        [Authorize(Roles = "CEO")]
+        [Authorize(Roles = "Mozo")]
         [HttpPost]
         public async Task<ActionResult<VentaCreateDto>> PostVenta(VentaCreateDto ventaDto)
         {

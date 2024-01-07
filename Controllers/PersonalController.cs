@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DashboardDemo.Controllers
 {
-    [Authorize(Roles = "CEO, Gerente")]
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "CEO, Gerente")]
     public class PersonalController : ControllerBase
     {
         private readonly ILogger<PersonalController> _logger;
