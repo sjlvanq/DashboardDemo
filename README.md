@@ -43,7 +43,7 @@ La solución presentada ofrece la siguiente lógica de negocios:
 #### 3.1 Consideraciones generales
 *    Las ventas registran la fecha/hora en que fueron realizadas.
 #### 3.2 Implementacion
-*    Se ha considerado ociosa la referencia al turno en que se realizó la venta contando ya con las otras referencias.
+*    Se ha considerado ociosa la referencia al turno en que se realizó la venta contando ya con las otras referencias mediante las cuales puede obtenerse.
 *    En el modelo se utiliza un tipo de dato sql server decimal.
 
 # Seguridad
