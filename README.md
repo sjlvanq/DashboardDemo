@@ -54,5 +54,5 @@ La solución presentada ofrece la siguiente lógica de negocios:
 *    Se normaliza la respuesta ante errores basada en el objeto de respuesta ValidationProblemDetails (https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.validationproblemdetails?view=aspnetcore-8.0) devuelto por defecto en la validación automática. Se han creado clases para manejar distintos códigos de error.
 ### 1.3 Capa de validación intermedia basada en DTOs. 
 * Se utiliza una arquitectura de DTOs (Data Transfer Objects) específicos para las solicitudes acotando las entidades con correspondencia en la base de datos.
-### 1.4 Por hacer...
-*    Se reconoce la necesidad de utilizar un almacén de claves.
+### 1.4 TODOs:
+*    Utilizar un almacén de claves.
